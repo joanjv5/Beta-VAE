@@ -308,8 +308,6 @@ meshDict, time, varDict = h5_load('CYLINDER.h5')
 
 
 
-
-'''
 ae.train()
 num_epochs = 100
 
@@ -332,8 +330,9 @@ for epoch in range(num_epochs):
 
 
 torch.save(ae.state_dict(), './sim_ae' )
-'''
 instant = iter(train_dataloader)
+
+#EVALUATING THE MODEL
 ae.load_state_dict(torch.load('sim_ae'))
 ae.eval()
 meshDict, time, varDict = h5_load('CYLINDER.h5')
@@ -375,6 +374,5 @@ recon_instant =  torch.reshape( recon_instant,[89351,1] )
 recon_instant += mit_tensor
 varDict.update({'NEW2': {'point':varDict['VELOX'].get('point'),'ndim':varDict['VELOX'].get('ndim'),'value': snap3} })
 plotSnapshot(meshDict,varDict,vars=['NEW2'],instant=0,cmap='jet',cpos='xy')
-exit(0)
 varDict.update({'NEW2': {'point':varDict['VELOX'].get('point'),'ndim':varDict['VELOX'].get('ndim'),'value': snap2} })
 plotSnapshot(meshDict,varDict,vars=['NEW2'],instant=0,cmap='jet',cpos='xy')
