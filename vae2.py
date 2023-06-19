@@ -78,29 +78,29 @@ class Encoder(nn.Module):
         
         #out = self.max(out)
         
-        out = torch.tanh(self.conv2(out))
+        out = torch.nn.functional.elu(self.conv2(out))
         
         
         #out = self.max(out)
         
-        out = torch.tanh(self.conv3(out))
+        out = torch.nn.functional.elu(self.conv3(out))
         
         
         #out = self.max(out)
         
-        out = torch.tanh(self.conv4(out))
+        out = torch.nn.functional.elu(self.conv4(out))
         
         
         #out = self.max(out)
         
-        out = torch.tanh(self.conv5(out))
+        out = torch.nn.functional.elu(self.conv5(out))
        
         
         #out = self.max(out)
         
         out = self.flat(out)
         
-        out = torch.tanh(self.fc1(out))
+        out = torch.nn.functional.elu(self.fc1(out))
        
         
         mu = self.mu(out)
@@ -155,30 +155,30 @@ class Decoder(nn.Module):
         
     def forward(self, x):
         
-        out = torch.tanh(self.fc1(x))
+        out = torch.nn.functional.elu(self.fc1(x))
         
         
         
-        out = torch.tanh(self.fc2(out))
+        out = torch.nn.functional.elu(self.fc2(out))
         
         
         out = out.view(out.size(0),self.c*2*2*2*2, 14, 6)
         #out = self.up(out)
         
-        out = torch.tanh(self.conv5(out))
+        out = torch.nn.functional.elu(self.conv5(out))
         
         
         #out = self.up(out)
         
-        out = torch.tanh(self.conv4(out))
+        out = torch.nn.functional.elu(self.conv4(out))
         
         #out = self.up(out)
         
-        out = torch.tanh(self.conv3(out))
+        out = torch.nn.functional.elu(self.conv3(out))
         
         #out = self.up(out)
         
-        out = torch.tanh(self.conv2(out))
+        out = torch.nn.functional.elu(self.conv2(out))
         
         #out = self.up(out)
         
