@@ -84,28 +84,4 @@ class Load_h5_file(Dataset):
         
         
         
-        
-        '''
-        resized_snap = snap.resize_(449,199) #posem el vector velocitat en forma de matriu
-                                             #per poder alientar la xarxa neruonal
-        croped_snap = resized_snap[1:449,3:195] #d'aquesta manera tindrem una matriu de 448 x 192, que 
-                                                #a mesura que anem passant per les convents tindrem divisions exactes
-        croped_snap = croped_snap.resize_(1,448,192) #li afegim el número de canals a la primera dimensió pq pytorch entingui el format
-        #print(croped_snap.shape)
-        #print(croped_snap)
-        #print(self.max)
-        '''
-        #return croped_snap
-
-
-#dataset = Load_h5_file('CYLINDER.h5')
-
-'''
-
-r_v = dataset[4].resize_(449,199)
-r = r_v.resize_(89351,1)
-
-meshDict, time, varDict = h5_load('CYLINDER.h5')
-varDict.update({'NEW': {'point':varDict['VELOX'].get('point'),'ndim':varDict['VELOX'].get('ndim'),'value': r} })
-plotSnapshot(meshDict,varDict,vars=['NEW'],instant=0,cmap='jet',cpos='xy')
-'''
+     
